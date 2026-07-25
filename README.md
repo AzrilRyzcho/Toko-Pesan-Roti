@@ -22,9 +22,8 @@ Aplikasi E-Commerce Pemesanan Roti & Sistem Manajemen Toko berbasis web mengguna
 
 ## 📚 Dokumentasi Project Rekayasa Perangkat Lunak (RPL)
 
-Dokumentasi lengkap untuk **Project RPL (40%)** telah tersedia di dalam repositori ini:
 - 📑 **[LAPORAN_RPL.md](LAPORAN_RPL.md)**: Dokumen lengkap berisi SDLC Waterfall Iteratif, SRS, Kamus Data (9 tabel), DFD (Level 0, 1, 2), ERD, UML Diagrams (Use Case, Class, Activity, Sequence), Functionality Test (Black Box), dan Usability Test (SUS Score 84.5).
-- 📊 **[PPT_PRESENTASI_RPL.md](PPT_PRESENTASI_RPL.md)**: Outlining 15 Slide Presentasi UAS.
+
 
 ---
 
