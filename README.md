@@ -18,14 +18,7 @@ Aplikasi E-Commerce Pemesanan Roti & Sistem Manajemen Toko berbasis web mengguna
 - **Verifikasi Pembayaran**: Peninjauan foto resi transfer bank dan persetujuan transaksi.
 - **Laporan Penjualan & Ekspor Pelanggan**: Rekapitulasi penjualan lunas dan ekspor data ke CSV.
 
----
 
-## 📚 Dokumentasi Project Rekayasa Perangkat Lunak (RPL)
-
-- 📑 **[LAPORAN_RPL.md](LAPORAN_RPL.md)**: Dokumen lengkap berisi SDLC Waterfall Iteratif, SRS, Kamus Data (9 tabel), DFD (Level 0, 1, 2), ERD, UML Diagrams (Use Case, Class, Activity, Sequence), Functionality Test (Black Box), dan Usability Test (SUS Score 84.5).
-
-
----
 
 ## 🚀 Panduan Instalasi & Menjalankan Proyek
 
