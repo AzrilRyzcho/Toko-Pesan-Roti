@@ -1,0 +1,19 @@
+
+7-Zip 24.09 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-11-29
+
+Scanning the drive for archives:
+1 file, 438642 bytes (429 KiB)
+
+Extracting archive: C:\Toko-Roti\vendor\composer\tmp-e8694ea0cf21106d137a0d88c69dd54a.zip
+--
+Path = C:\Toko-Roti\vendor\composer\tmp-e8694ea0cf21106d137a0d88c69dd54a.zip
+Type = zip
+Physical Size = 438642
+Comment = 186dab580576598076de6818596d12b61801880e
+
+Everything is Ok
+
+Folders: 21
+Files: 151
+Size:       1427541
+Compressed: 438642
