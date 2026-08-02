@@ -52,7 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => (str_contains(env('APP_URL', ''), '${'))
+        ? 'https://toko-pesan-roti-production.up.railway.app'
+        : env('APP_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
