@@ -13,8 +13,10 @@ RUN npm run build
 # Stage 2: Production Web Server with PHP 8.3 & Nginx
 FROM serversideup/php:8.3-fpm-nginx
 
-# Configure Nginx Document Root to Laravel /public folder
+# Configure Nginx Document Root to Laravel /public folder & Port
 ENV WEBCONFIG_DOCUMENT_ROOT=/var/www/html/public
+ENV HTTP_PORT=8080
+ENV PORT=8080
 
 USER root
 
@@ -32,3 +34,5 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 USER www-data
+
+EXPOSE 8080
