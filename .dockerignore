@@ -4,7 +4,6 @@
 .phpunit.result.cache
 node_modules
 vendor
-public/build
 storage/*.key
 .env
 .env.*
