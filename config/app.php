@@ -52,9 +52,9 @@ return [
     |
     */
 
-    'url' => (str_contains(env('APP_URL', ''), '${'))
+    'url' => trim(preg_replace('/[\r\n\t]/', '', (string) ((str_contains(env('APP_URL', ''), '${'))
         ? 'https://toko-pesan-roti-production.up.railway.app'
-        : env('APP_URL', 'http://localhost'),
+        : env('APP_URL', 'http://localhost')))),
 
     /*
     |--------------------------------------------------------------------------
