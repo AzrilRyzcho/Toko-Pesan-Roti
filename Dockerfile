@@ -5,6 +5,7 @@ FROM serversideup/php:8.3-fpm-nginx
 ENV WEBCONFIG_DOCUMENT_ROOT=/var/www/html/public
 ENV HTTP_PORT=8080
 ENV PORT=8080
+ENV AUTORUN_ENABLED=false
 
 USER root
 
