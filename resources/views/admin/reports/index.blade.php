@@ -6,8 +6,11 @@
 <style>
     @media print {
         /* Hide sidebar, topbar, filter buttons, and any SweetAlert popups completely */
-        aside.admin-sidebar,
-        header.admin-topbar,
+        aside,
+        header,
+        nav,
+        .admin-sidebar,
+        .admin-topbar,
         .no-print,
         .swal2-container,
         .swal2-backdrop-show,
@@ -15,6 +18,10 @@
         button {
             display: none !important;
             visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         /* Make main container fill 100% print width cleanly */
@@ -24,30 +31,64 @@
             padding: 0 !important;
             margin: 0 !important;
             width: 100% !important;
+            font-size: 11pt !important;
+            color: #000000 !important;
         }
         
+        body > div.d-flex {
+            display: block !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
         .admin-main {
             width: 100% !important;
             max-width: 100% !important;
             margin: 0 !important;
-            padding: 15px !important;
+            padding: 0 !important;
             background-color: #FFFFFF !important;
         }
 
         .container-fluid {
             padding: 0 !important;
+            width: 100% !important;
+        }
+
+        /* Ensure 3 columns sit side by side in print */
+        .row {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            width: 100% !important;
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        .col-4 {
+            width: 33.333333% !important;
+            flex: 0 0 33.333333% !important;
+            max-width: 33.333333% !important;
         }
 
         /* Clean card styles for PDF print */
-        .card-figma {
+        .card-figma, .card {
             box-shadow: none !important;
             border: 1px solid #EADBCE !important;
             page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 1rem !important;
         }
 
         /* Clean table for print */
         .table {
             width: 100% !important;
+        }
+
+        /* Ensure chart canvas fits cleanly */
+        canvas#revenueLineChart {
+            max-width: 100% !important;
+            width: 100% !important;
+            height: 220px !important;
         }
     }
 </style>
@@ -63,20 +104,20 @@
 
         <div class="d-flex align-items-center gap-2 flex-wrap no-print">
             <!-- Interactive Filter Tabs (Harian, Mingguan, Bulanan) -->
-            <div class="d-flex gap-1 p-1 bg-white rounded-3 border border-secondary-subtle">
+            <div class="d-flex gap-1 p-1 bg-white rounded-3 border border-secondary-subtle shadow-sm">
                 <button type="button" id="btn-harian" onclick="setReportFilter('harian')" class="btn btn-sm px-3 py-1.5 text-muted border-0">Harian</button>
                 <button type="button" id="btn-mingguan" onclick="setReportFilter('mingguan')" class="btn btn-sm px-3 py-1.5 fw-bold rounded-2 text-primary" style="background-color: #FAF3E8;">Mingguan</button>
                 <button type="button" id="btn-bulanan" onclick="setReportFilter('bulanan')" class="btn btn-sm px-3 py-1.5 text-muted border-0">Bulanan</button>
             </div>
 
-            <!-- Print Button -->
-            <button type="button" class="btn btn-white bg-white border-secondary-subtle btn-sm px-3 py-2 text-primary" onclick="window.print()">
-                <i class="fa-solid fa-print me-1"></i> Cetak
+            <!-- Print Button (Cetak) -->
+            <button type="button" class="btn btn-white bg-white border border-secondary-subtle btn-sm px-3 py-2 text-primary shadow-sm" onclick="window.print()">
+                <i class="fa-solid fa-print me-1.5 text-caramel"></i> Cetak
             </button>
 
             <!-- Export PDF Button -->
-            <button type="button" class="btn btn-caramel btn-sm px-3 py-2 text-white" onclick="exportPDF()">
-                <i class="fa-solid fa-file-pdf me-1"></i> Ekspor PDF
+            <button type="button" class="btn btn-caramel btn-sm px-3 py-2 text-white shadow-sm" onclick="exportPDF()">
+                <i class="fa-solid fa-file-pdf me-1.5"></i> Ekspor PDF
             </button>
         </div>
     </div>
@@ -294,7 +335,13 @@ function setReportFilter(period) {
 }
 
 function exportPDF() {
+    const originalTitle = document.title;
+    const dateStr = new Date().toISOString().split('T')[0];
+    document.title = `Laporan_Penjualan_Toko_Pesan_Roti_${dateStr}`;
     window.print();
+    setTimeout(() => {
+        document.title = originalTitle;
+    }, 1500);
 }
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -18,7 +18,7 @@
         .admin-sidebar {
             width: 250px;
             height: 100vh;
-            position: sticky;
+            position: fixed;
             top: 0;
             left: 0;
             overflow-y: auto;
@@ -46,6 +46,7 @@
         }
         .admin-main {
             flex-grow: 1;
+            margin-left: 250px;
             background-color: #FAF6ED;
             min-height: 100vh;
             width: calc(100% - 250px);
@@ -55,12 +56,84 @@
             border-bottom: 1px solid #EADBCE;
             padding: 14px 28px;
         }
+
+        /* Global Print Styles for Clean Reports & PDF Export */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 10mm 12mm 10mm 12mm;
+            }
+
+            html, body {
+                background-color: #FFFFFF !important;
+                background: #FFFFFF !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                color: #000000 !important;
+            }
+
+            aside,
+            header,
+            .admin-sidebar,
+            .admin-topbar,
+            .no-print,
+            .swal2-container,
+            .swal2-backdrop-show,
+            .swal2-popup {
+                display: none !important;
+                visibility: hidden !important;
+                width: 0 !important;
+                height: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            body > div.d-flex {
+                display: block !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .admin-main {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background-color: #FFFFFF !important;
+            }
+
+            main.p-4 {
+                padding: 0 !important;
+            }
+
+            .container-fluid {
+                padding: 0 !important;
+                width: 100% !important;
+            }
+
+            .card, .card-figma {
+                box-shadow: none !important;
+                border: 1px solid #EADBCE !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .table {
+                width: 100% !important;
+            }
+
+            canvas {
+                max-width: 100% !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-bakery-cream">
     <div class="d-flex">
         <!-- Figma Admin Sidebar (Screenshot 2) -->
-        <aside class="admin-sidebar p-3 d-flex flex-column justify-content-between">
+        <aside class="admin-sidebar p-3 d-flex flex-column justify-content-between no-print">
             <div>
                 <!-- Brand Header -->
                 <div class="d-flex align-items-center gap-2 mb-4 px-2 pt-2">
@@ -108,7 +181,7 @@
         <!-- Admin Main Content Body -->
         <div class="admin-main d-flex flex-column">
             <!-- Top Navbar (Screenshot 2) -->
-            <header class="admin-topbar d-flex justify-content-between align-items-center">
+            <header class="admin-topbar d-flex justify-content-between align-items-center no-print">
                 <h4 class="font-serif fw-bold text-primary mb-0">@yield('title', 'Ringkasan Hari Ini')</h4>
 
                 <div class="d-flex align-items-center gap-3">

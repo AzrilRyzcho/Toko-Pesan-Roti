@@ -1,0 +1,13 @@
+.git
+.github
+.editorconfig
+.phpunit.result.cache
+node_modules
+vendor
+public/build
+storage/*.key
+.env
+.env.*
+!.env.example
+tests
+temp
