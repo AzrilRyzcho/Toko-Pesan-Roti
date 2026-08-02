@@ -19,6 +19,9 @@ RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=php+
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Ensure public/storage symlink exists
+RUN php artisan storage:link --force
+
 USER www-data
 
 EXPOSE 8080
