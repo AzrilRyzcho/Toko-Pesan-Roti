@@ -11,27 +11,24 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Production Web Server with PHP 8.3 & Nginx
-FROM richarvey/nginx-php-fpm:latest
+FROM serversideup/php:8.3-fpm-nginx
 
-# Set configuration environment variables for Nginx & PHP
-ENV WEBROOT=/var/www/html/public
-ENV PHP_ERRORS_STDERR=1
-ENV RUN_CLI_SCRIPTS=1
-ENV REAL_IP_HEADER=1
+# Configure Nginx Document Root to Laravel /public folder
+ENV WEBCONFIG_DOCUMENT_ROOT=/var/www/html/public
 
-WORKDIR /var/www/html
+USER root
 
 # Copy application source code
-COPY . /var/www/html
+COPY --chown=www-data:www-data . /var/www/html
 
 # Copy compiled assets from frontend stage
-COPY --from=frontend /app/public/build /var/www/html/public/build
+COPY --from=frontend --chown=www-data:www-data /app/public/build /var/www/html/public/build
 
-# Install PHP dependencies without dev packages
-RUN composer install --no-dev --optimize-autoloader
+# Install PHP dependencies for Laravel
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=php+
 
-# Ensure proper permissions for Laravel storage & cache folders
+# Set proper permissions for storage & cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-EXPOSE 80
+USER www-data
