@@ -25,6 +25,21 @@ class CategorySeeder extends Seeder
                 'name' => 'Kue & Pastry',
                 'description' => 'Kue premium dan pastry mentega ala Perancis yang renyah.',
                 'image' => 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600'
+            ],
+            [
+                'name' => 'Artisan Bread',
+                'description' => 'Roti artisan sourdough dan gandum alami pilihan.',
+                'image' => 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&q=80&w=600'
+            ],
+            [
+                'name' => 'Premium Cakes',
+                'description' => 'Kue ulang tahun dan dessert cake premium lembut.',
+                'image' => 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&q=80&w=600'
+            ],
+            [
+                'name' => 'Signature Cookies',
+                'description' => 'Kue kering mentega renyah dan cookies cokelat melimpah.',
+                'image' => 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=600'
             ]
         ];
 
